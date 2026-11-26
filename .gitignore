@@ -1,0 +1,27 @@
+# Runtime & local databases
+database.db
+*.db
+*.db-journal
+*.sqlite
+students.csv
+bank_data.txt
+books.json
+members.json
+
+# Dependencies & build artifacts
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+*.class
+*.exe
+*.out
+bin/
+obj/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

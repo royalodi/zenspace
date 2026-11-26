@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenSpace - Premium Mindfulness & Wellness Portal</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="zen-space-theme">
+
+    <!-- Background Ambient Bubbles -->
+    <div class="ambient-bubble bubble-1"></div>
+    <div class="ambient-bubble bubble-2"></div>
+
+    <!-- Top Sticky Bar -->
+    <nav class="navbar navbar-dark pt-3 pb-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="logo-accent-zen"><i class="fa-solid fa-spa me-2"></i>ZEN</span><span class="logo-light-zen">SPACE</span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge status-badge-zen"><i class="fa-solid fa-peace text-info-zen me-1 pulse-peace"></i> Calming Vibe</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container my-5">
+        
+        <!-- Header Row -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-9">
+                <h1 class="welcome-text-zen">Cultivate Inner Peace</h1>
+                <p class="subtitle-text-zen">Align your breathing, relax with soft synthesized ambient sounds, and track your daily moods in a serene, distraction-free space.</p>
+            </div>
+            <div class="col-md-3 text-md-end d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+                <button class="btn btn-reset-zen" id="btnClearLogs"><i class="fa-solid fa-rotate-left me-2"></i>Wipe History</button>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- COLUMN 1: Breathing Coach (Expanding sphere) -->
+            <div class="col-lg-4">
+                <div class="glass-card-zen h-100 text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title-zen text-start"><i class="fa-solid fa-wind text-info-zen me-2"></i>Breathing Coach</h3>
+                        <p class="card-desc-zen text-start">Deep inhalation/exhalation pacing loops to reset your nervous system.</p>
+
+                        <!-- Breathing Visualizer Ball -->
+                        <div class="breath-visualizer-container">
+                            <div class="breath-sphere" id="breathSphere">
+                                <div class="breath-inner-core"></div>
+                            </div>
+                            <div class="breath-instruction mt-4" id="breathInstruction">TAP START BELOW</div>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Controls -->
+                    <div class="mt-4">
+                        <button class="btn btn-primary-zen w-100" id="btnToggleBreath"><i class="fa-solid fa-play me-2"></i>Begin Breathing Cycle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: Meditation Timer (Synthesized drone audio) -->
+            <div class="col-lg-4">
+                <div class="glass-card-zen h-100 text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title-zen text-start"><i class="fa-solid fa-stopwatch text-info-zen me-2"></i>Zen Meditation Timer</h3>
+                        <p class="card-desc-zen text-start">Soak in calm. Features synthesized ambient soundscapes.</p>
+
+                        <!-- Timer Select Config -->
+                        <div id="meditationSettings" class="text-start mb-4">
+                            <div class="mb-4">
+                                <label class="form-label-zen d-block mb-2" for="meditationDuration">Meditation Duration</label>
+                                <select class="form-select-zen w-100" id="meditationDuration">
+                                    <option value="60">1 Minute Session</option>
+                                    <option value="180">3 Minutes Session</option>
+                                    <option value="300" selected>5 Minutes Session</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label-zen d-block mb-2" for="ambientSoundType">Ambient Sound Synthesis</label>
+                                <select class="form-select-zen w-100" id="ambientSoundType">
+                                    <option value="ocean">Tibetan Ocean Swells</option>
+                                    <option value="cosmic">Cosmic Nebula Drones</option>
+                                    <option value="none">Silence (Timer only)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Active Meditation Display -->
+                        <div id="meditationActiveClock" class="d-none my-5">
+                            <div class="meditation-ring">
+                                <div class="meditation-clock" id="meditationClockText">05:00</div>
+                                <div class="meditation-status" id="meditationStatusText">MEDITATING...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div>
+                        <button class="btn btn-info-zen w-100 py-3" id="btnStartMeditation"><i class="fa-solid fa-spa me-2"></i>Start Meditation</button>
+                        <div class="d-none gap-2 mt-2" id="meditationActiveControls">
+                            <button class="btn btn-outline-danger-zen w-100 py-2" id="btnCancelMeditation"><i class="fa-solid fa-stop"></i> End Meditation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: Mood Tracker & Quote -->
+            <div class="col-lg-4">
+                <div class="glass-card-zen h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="card-title-zen"><i class="fa-solid fa-heart text-info-zen me-2"></i>Mood Logger</h3>
+                        <p class="card-desc-zen">Record your emotional states to notice patterns of mindfulness.</p>
+
+                        <!-- Mood selector icons -->
+                        <div class="mood-selector-row mb-4">
+                            <button class="mood-btn" onclick="logMood('Calm', '😌')" title="Calm">😌<span>Calm</span></button>
+                            <button class="mood-btn" onclick="logMood('Happy', '😊')" title="Happy">😊<span>Happy</span></button>
+                            <button class="mood-btn" onclick="logMood('Anxious', '🥺')" title="Anxious">🥺<span>Anxious</span></button>
+                            <button class="mood-btn" onclick="logMood('Tired', '🥱')" title="Tired">🥱<span>Tired</span></button>
+                        </div>
+
+                        <!-- Mood logs history -->
+                        <h4 class="card-subtitle-zen mb-3">Mindfulness logs</h4>
+                        <div class="list-group-zen scrollable-mood-list mb-4" id="moodLogsList">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Positive quote container -->
+                    <div class="quote-box-zen pt-3 border-top-zen">
+                        <i class="fa-solid fa-quote-left quote-icon-zen mb-2"></i>
+                        <p class="quote-text mb-1" id="dailyQuoteText">"Quiet the mind and the soul will speak."</p>
+                        <span class="quote-author" id="dailyQuoteAuthor">— Buddha</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 text-muted-zen border-top-zen">
+        <p class="mb-0 small">ZenSpace • Serene Responsive Wellness Portal</p>
+    </footer>
+
+    <!-- Bootstrap & Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
